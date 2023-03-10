@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            border: none;
+            box-sizing: border-box;
+            color: #fff;
+        }
+
+        h1,
+        div {
+            font-weight: 100;
+        }
+
+        h1 {
+            font-size: 23px;
+            text-transform: none;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .main {
+            border: 1px solid #fff;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 27px;
+            text-transform: uppercase;
+            width: fit-content;
+            margin: 30px 20px 0;
+            padding: 15px 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            background-color: rgba(190, 253, 255, 0.05);
+        }
+
+        .nums {
+            border-spacing: 10px;
+            margin-top: 10px;
+        }
+
+        .num {
+            display: table-cell;
+            padding: 7px 18px;
+            border-radius: 10px;
+            background: linear-gradient(#1E2325, #1E2325) padding-box, linear-gradient(0deg, rgba(179, 255, 222, 1) 0%, rgba(255, 128, 167, 1) 100%);
+            border: 1px solid transparent;
+            font-size: 30px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            margin-bottom: 20px;
+            width: 100px;
+            height: auto;
+        }
+
+        @media (min-width: 600px) {
+            body {
+                min-height: 50vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <table cellpadding="0" cellspacing="0" border="0" width="100%" height="100%">
+        <tr>
+            <td valign="top" align="center">
+                <!-- Outer container -->
+                <table cellpadding="0" cellspacing="0" border="0" width="100%" height="100%">
+                    <tr>
+                        <td valign="top" align="center" bgcolor="#051317">
+                            <!-- Add the background image as an inline image and hide it with CSS -->
+                            <img src="cid:bg" width="1" height="1" style="display: none;">
+
+                            <div
+                                style="background-color: #051317; background-image: url('cid:bg'); background-repeat: no-repeat; background-position: center center; background-size: cover; width: 100%; height: 100%;">
+                                <!-- Inner container -->
+                                <table cellpadding="0" cellspacing="0" border="0" width="100%" height="100%">
+                                    <tr>
+                                        <td valign="top" align="center" class="container" style="padding: 200px 0;">
+                                            <h1>
+                                                Welcome, {{username}}!</h1>
+                                            <section class="main">
+                                                <div>Your registration code is: </div>
+                                                <table class="nums">
+                                                    <tr>
+                                                        <td class="num">{{num1}}</td>
+                                                        <td class="num">{{num2}}</td>
+                                                        <td class="num">{{num3}}</td>
+                                                        <td class="num">{{num4}}</td>
+                                                        <td class="num">{{num5}}</td>
+                                                    </tr>
+                                                </table>
+                                            </section>
+
+                                        </td>
+                                    </tr>
+                                </table>
+                                <img src="cid:logo" alt="stnk logo" class="logo">
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
