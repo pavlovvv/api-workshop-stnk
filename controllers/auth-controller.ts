@@ -156,6 +156,48 @@ class authController {
     }
   }
 
+  async login(
+    req: TypedRequestBody<IUserDataRequest>,
+    res: TypedResponse<ILoginResponse>,
+    next: NextFunction
+  ) {
+    try {
+      const { email, password } = req.body;
+
+      const candidate: IUserData | null = await User.findOne({ email });
+      const tokenFromDb = await Token.findOne({ user: candidate });
+      const refreshTokenFromDb: string =
+        tokenFromDb?.refreshTokens[tokenFromDb.refreshTokens.length - 1];
+      const isPasswordValid: boolean = bcrypt.compareSync(
+        password,
+        candidate!.password
+      );
+
+      if (!candidate || !isPasswordValid) {
+        throw ApiError.BadRequest("Incorrect email or password");
+      }
+
+      const tokens = authService.generateTokens(
+        candidate!._id,
+        candidate!.email,
+        candidate!.activationCode
+      );
+
+      await authService.updateToken(refreshTokenFromDb, tokens.refreshToken);
+
+      res.cookie("refreshToken", tokens.refreshToken, {
+        maxAge: 30 * 24 * 60 * 60 * 1000,
+        httpOnly: true,
+        secure: true,
+        sameSite: "none",
+      });
+
+      return res.status(200).json({ accessToken: tokens.accessToken });
+    } catch (e) {
+      next(e);
+    }
+  }
+
   async logout(
     req: Request,
     res: TypedResponse<IDefaultResponse>,

@@ -2,7 +2,7 @@ import { Schema, model } from "mongoose";
 
 const User = new Schema(
   {
-    username: {type: String, required: true},
+    username: { type: String, required: true },
     userId: { type: Number, unique: true, required: true },
     gameId: { type: Number, required: true },
     email: { type: String, unique: true, required: true },
