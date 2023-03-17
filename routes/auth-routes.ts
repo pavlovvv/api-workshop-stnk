@@ -12,6 +12,7 @@ router.post(
     .withMessage("Password must be more than 8 and less than 32 characters"),
   controller.signup
 );
+router.post("/login", controller.login);
 router.post("/verifyCode", controller.verifyCode);
 router.get("/refresh", controller.refresh);
 router.delete("/logout", controller.logout);
